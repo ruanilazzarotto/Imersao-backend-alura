@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { listarPosts, postarNovoPost, uploadImagem } from "../controllers/postController.js";
+import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost } from "../controllers/postController.js";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -19,6 +19,7 @@ const routes = (app) => {
     app.get("/posts", listarPosts);
     app.post("/posts", postarNovoPost);
     app.post("/upload", upload.single("imagem"), uploadImagem);
+    app.put("/update/:id", atualizarNovoPost);
 
 }
 
